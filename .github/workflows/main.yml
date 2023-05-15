@@ -9,6 +9,7 @@ on:
 jobs:
   trigger-workflow:
     uses: tiriyon/poc-gh-workflows/.github/workflows/build_and_push.yml@main
+    secrets: inherit
 #     runs-on: ubuntu-latest
 
 #     steps:
