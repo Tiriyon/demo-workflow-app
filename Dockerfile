@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY main.py .
 
 # Run the Python script
-CMD [ "python", "./your_script.py" ]
+CMD [ "python", "./main.py" ]
