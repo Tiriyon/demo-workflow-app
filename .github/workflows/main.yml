@@ -17,10 +17,10 @@ jobs:
       - name: Print inputs passed to reusable workflow
         id: step1
         run: | 
-          echo "{app_name}={$APP_NAME}" >> GITHUB_OUTPUT
+          echo "{app_name}={$APP_NAME}" >> "$GITHUB_OUTPUT"
           echo "app_name: $APP_NAME"
 
-          echo "{cluster}={$CLUSTER}" >> $GITHUB_OUTPUT
+          echo "{cluster}={$CLUSTER}" >> "$GITHUB_OUTPUT"
           echo "cluster: $CLUSTER"
 
   trigger-workflow:
