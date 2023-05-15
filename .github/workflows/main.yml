@@ -13,5 +13,5 @@ jobs:
       - name: Trigger Workflow
         uses: tiriyon/poc-gh-workflows@main
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKE_GITHUB }}
           event-type: build-docker
