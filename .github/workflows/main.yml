@@ -13,10 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Trigger Workflow
-        uses: tiriyon/poc-gh-workflows@main
+        uses: tiriyon/workflow@main
         with:
-          token: ${{ secrets.TOKE_GITHUB }}
-          event-type: build-docker
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workflow-file: .github/workflows/build-docker.yml
+          event-type: build_and_push.yml
+
+
+
 
 
 
