@@ -9,7 +9,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the Python script into the container
-COPY your_script.py .
+COPY main.py .
 
 # Run the Python script
 CMD [ "python", "./your_script.py" ]
