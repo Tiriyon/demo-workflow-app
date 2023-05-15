@@ -6,22 +6,22 @@ on:
   workflow_dispatch:
 env:
   APP_NAME: example-app
-  CLUSTER: prod
+  CLUSTER_NAME: prod
 jobs:
   print:
     runs-on: ubuntu-latest
     outputs:
       app_name: ${{ steps.step1.outputs.app_name }}
-      cluster: ${{ steps.step1.outputs.cluster }}  
+      cluster: ${{ steps.step1.outputs.cluster_name }}  
     steps:
       - name: Print inputs passed to reusable workflow
         id: step1
         run: | 
-          echo "{app_name}={$APP_NAME}" >> "$GITHUB_ENV"
+          echo "app_name=$APP_NAME" >> "$GITHUB_OUTPUT"
           echo "app_name: $APP_NAME"
 
-          echo "{cluster}={$CLUSTER}" >> "$GITHUB_ENV"
-          echo "cluster: $CLUSTER"
+          echo "cluster_name=$CLUSTER_NAME" >> "$GITHUB_OUTPUT"
+          echo "cluster: $CLUSTER_NAME"
 
   trigger-workflow:
     needs:
@@ -29,7 +29,7 @@ jobs:
     uses: tiriyon/poc-gh-workflows/.github/workflows/build_and_push.yml@main
     with:
       app_name: ${{ needs.print.outputs.app_name }}
-      cluster: ${{ needs.print.outputs.cluster }}
+      cluster: ${{ needs.print.outputs.cluster_name }}
       
     secrets: inherit
     
