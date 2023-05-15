@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       app_name: ${{ steps.step1.outputs.app_name }}
-      cluster: ${{ steps.step1.outputs.cluster_name }}  
+      cluster_name: ${{ steps.step1.outputs.cluster_name }}  
     steps:
       - name: Print inputs passed to reusable workflow
         id: step1
