@@ -1,0 +1,17 @@
+name: Trigger Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Workflow
+        uses: tiriyon/poc-gh-workflows@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: build-docker
