@@ -7,13 +7,14 @@ on:
 
 jobs:
   trigger-workflow:
-    runs-on: ubuntu-latest
+    uses: tiriyon/poc-gh-workflows/.github/workflows/build_and_push.yml@main
+#     runs-on: ubuntu-latest
 
-    steps:
+#     steps:
 #       - name: Checkout repository
 #         uses: actions/checkout@v2
-      - name: Trigger Workflow
-        uses: tiriyon/poc-gh-workflows/.github/workflows/build_and_push.yml@main
+#       - name: Trigger Workflow
+        
 #         with:
 #           token: ${{ secrets.GITHUB_TOKEN }}
 #           workflow-file: .github/workflows/build-docker.yml
