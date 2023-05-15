@@ -21,7 +21,7 @@ jobs:
           echo "app_name: $APP_NAME"
 
           echo "cluster_name=$CLUSTER_NAME" >> "$GITHUB_OUTPUT"
-          echo "cluster: $CLUSTER_NAME"
+          echo "cluster_name: $CLUSTER_NAME"
 
   trigger-workflow:
     needs:
@@ -29,7 +29,7 @@ jobs:
     uses: tiriyon/poc-gh-workflows/.github/workflows/build_and_push.yml@main
     with:
       app_name: ${{ needs.print.outputs.app_name }}
-      cluster: ${{ needs.print.outputs.cluster_name }}
+      cluster_name: ${{ needs.print.outputs.cluster_name }}
       
     secrets: inherit
     
