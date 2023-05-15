@@ -1,17 +1,41 @@
 name: Trigger Workflow
-
+env:
+  APP_NAME: example-app
+  CLUSTER: prod
 on:
-  push:
-    branches:
-      - main
+#   push:
+#     branches:
+#       - main
   workflow_dispatch:
 
 jobs:
+  print:
+    runs-on: ubuntu-latest
+    outputs:
+      app_name: ${{ steps.step1.outputs.app_name }}
+      cluster: ${{ steps.step1.outputs.cluster }}  
+    steps:
+      - name: Print inputs passed to reusable workflow
+        id: step1
+        run: | 
+          echo "app_name: $APP_NAME" >> GITHUB_OUTPUT
+          echo "app_name: $APP_NAME"
+
+          echo "cluster: $CLUSTER" >> $GITHUB_OUTPUT
+          echo "cluster: $CLUSTER"
+
   trigger-workflow:
+    needs:
+      - print
     uses: tiriyon/poc-gh-workflows/.github/workflows/build_and_push.yml@main
+    with:
+      app_name: ${{ needs.print.outputs.app_name }}
+      cluster: ${{ needs.print.outputs.cluster }}
+      
     secrets: inherit
-    env:
-      $(cat env-vars.env)
+    
+    
+
 #     runs-on: ubuntu-latest
 
 #     steps:
